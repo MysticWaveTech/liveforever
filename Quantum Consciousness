@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radionics Wish Machine</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+        .container {
+            margin: 0 auto;
+            width: 80%;
+            position: relative;
+        }
+        .info-box {
+            background-color: #111;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            margin-bottom: 20px;
+        }
+        .info-box h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .info-box p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+        .btn {
+            margin: 20px;
+            padding: 15px 30px;
+            background-color: #ff00ff;
+            color: #fff;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #e600e6;
+        }
+        .full-system, .phi-max, .hidden-part {
+            display: none;
+            margin-top: 50px;
+            border: 2px solid #ff0000;
+            padding: 20px;
+            background-color: #333;
+            color: #ff0000;
+            box-shadow: 0 0 20px #ff0000;
+        }
+        .phi-max {
+            background-color: #444;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 15px #00ff00;
+        }
+        .subsystem-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #222;
+            color: #0f0;
+            padding: 20px;
+            box-shadow: 0 0 20px #0f0;
+            z-index: 10;
+            overflow: auto;
+            text-align: left;
+        }
+        .subsystem-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .subsystem-btn:hover {
+            background-color: #cc0000;
+        }
+        .neuron-node {
+            width: 50px;
+            height: 50px;
+            background-color: #ff00ff;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 10px;
+            position: relative;
+        }
+        .neuron-connection {
+            width: 2px;
+            background-color: #00ff00;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .text-glitch {
+            font-size: 30px;
+            animation: glitch 1s infinite;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 0 red, -2px 0 cyan; }
+            20% { text-shadow: -2px 0 red, 2px 0 cyan; }
+            40% { text-shadow: 2px 0 red, -2px 0 cyan; }
+            60% { text-shadow: -2px 0 red, 2px 0 cyan; }
+            80% { text-shadow: 2px 0 red, -2px 0 cyan; }
+            100% { text-shadow: -2px 0 red, 2px 0 cyan; }
+        }
+        .distraction {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('distraction.gif') no-repeat center center;
+            background-size: cover;
+            opacity: 0.7;
+            z-index: 1;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+        .radionics-section {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #333;
+            border: 2px solid #ff6600;
+            color: #ff6600;
+            box-shadow: 0 0 15px #ff6600;
+        }
+        .radionics-section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .radionics-section p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .slider, .text-box, .radio-box, .file-input {
+            margin: 10px;
+        }
+        .slider {
+            width: 80%;
+        }
+        .text-box, .radio-box {
+            width: 60%;
+        }
+        .file-input {
+            margin: 20px 0;
+        }
+        .file-input img {
+            max-width: 100%;
+            height: auto;
+        }
+        .broadcast-btn, .broadcast-supernatural-btn {
+            margin: 20px;
+            padding: 15px 30px;
+            background-color: #00ff00;
+            color: #fff;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .broadcast-btn:hover, .broadcast-supernatural-btn:hover {
+            background-color: #00cc00;
+        }
+        .sphere {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid #ff0000;
+            margin: 0 auto;
+            background: radial-gradient(circle, #ff0000 0%, transparent 80%);
+            box-shadow: 0 0 20px #ff0000;
+        }
+    </style>
+    <script>
+        function showSubsystem() {
+            document.getElementById('subsystemContainer').style.display = 'block';
+        }
+
+        function revealFullSystem() {
+            document.getElementById('fullSystem').style.display = 'block';
+            document.getElementById('phiMax').style.display = 'block';
+        }
+
+        function revealHiddenPart() {
+            document.getElementById('hiddenPart').style.display = 'block';
+        }
+
+        function activateRadionics() {
+            document.getElementById('radionicsMsg').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('radionicsMsg').style.display = 'none';
+            }, 3000); // Hide message after 3 seconds
+        }
+
+        function broadcastAudio() {
+            let audio = new Audio('your-audio-file.mp3');
+            audio.play();
+        }
+
+        function broadcastVideo() {
+            let video = document.getElementById('videoPlayer');
+            video.src = 'your-video-file.mp4';
+            video.style.display = 'block';
+            video.play();
+        }
+
+        function broadcastSupernatural() {
+            let audio = new Audio('your-supernatural-audio.mp3');
+            audio.play();
+            let video = document.getElementById('supernaturalVideoPlayer');
+            video.src = 'your-supernatural-video.mp4';
+            video.style.display = 'block';
+            video.play();
+        }
+
+        function handleImageUpload(event) {
+            let file = event.target.files[0];
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('uploadedImage').src = e.target.result;
+                document.getElementById('uploadedImage').style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="info-box">
+            <h1>The Integrated System</h1>
+            <p>Welcome to the integrated exploration of the system. In this model, neurons represent the subsystem, and reality in the brain encompasses the overarching system. Consciousness (Φ) is the central force integrating and shaping this framework.</p>
+            <p>Explore how individual neurons function within the broader reality of the brain and how phi (consciousness) directs these interactions to form our perception of existence.</p>
+            <button class="btn" onclick="showSubsystem()">Explore the Neuronal Subsystem</button>
+            <button class="btn" onclick="revealFullSystem()">Reveal the Full System and Phi Max</button>
+        </div>
+
+        <div id="subsystemContainer" class="subsystem-container">
+            <button class="subsystem-btn" onclick="activateRadionics()">Activate Radionics Wish Machine</button>
+            <h2>Behavioral Subsystems</h2>
+            <p>Explore the behavioral subsystems and their integration within the neuron-based subsystem. Here, you will find elements that represent neuronal activity and their connections.</p>
+            <div class="neuron-node"></div>
+            <div class="neuron-connection"></div>
+            <div class="neuron-node"></div>
+            <div class="neuron-connection"></div>
+            <div class="neuron-node"></div>
+
+            <div class="radionics-section">
+                <h2>Radionics Controls</h2>
+                <p>Adjust the settings and interact with the radionics machine to explore its effects.</p>
+                <input type="range" class="slider" min="0" max="100" value="50">
+                <input type="text" class="text-box" placeholder="Enter text here">
+                <div>
+                    <label><input type="radio" name="radio1"> Option 1</label>
+                    <label><input type="radio" name="radio1"> Option 2</label>
+                    <label><input type="radio" name="radio1"> Option 3</label>
+                </div>
+                <input type="file" class="file-input" accept="image/*" onchange="handleImageUpload(event)">
+                <img id="uploadedImage" style="display: none;" />
+                <button class="broadcast-btn" onclick="broadcastAudio()">Broadcast Audio</button>
+                <button class="broadcast-btn" onclick="broadcastVideo()">Broadcast Video</button>
+                <button class="broadcast-supernatural-btn" onclick="broadcastSupernatural()">Broadcast Supernatural</button>
+            </div>
+        </div>
+
+        <div id="fullSystem" class="full-system">
+            <p><strong>System Overview:</strong></p>
+            <p>The complete system integrates neurons (as a subsystem) within the brain's reality framework, guided by consciousness (Φ). This interaction forms the entire framework of our mental reality, where every neuron contributes to the integration of nature and the supernatural, with phi (consciousness) as the ultimate force driving these interactions.</p>
+            <p>This system represents the totality of our understanding, where every neuron contributes to the integration of nature and the supernatural, with phi (consciousness) as the ultimate force driving these interactions.</p>
+        </div>
+
+        <div id="phiMax" class="phi-max">
+            <p><strong>Phi Max:</strong> At the pinnacle of consciousness (Φ), we reach the ultimate potential where phi integrates and transcends all aspects of the system. Here, consciousness fully realizes its capacity to shape and influence the nature and supernatural realms within the brain's reality framework, embodying the highest state of understanding and interaction.</p>
+        </div>
+
+        <div id="hiddenPart" class="hidden-part">
+            <h2>Hidden Part</h2>
+            <p>Within the integrated system, there remains a hidden layer where the essence of the supernatural system is concealed. This hidden aspect reflects the fundamental nature of our reality and consciousness.</p>
+            <button class="subsystem-btn" onclick="revealHiddenPart()">Reveal Supernatural System</button>
+        </div>
+    </div>
+    <video id="videoPlayer" style="display: none;" controls></video>
+    <video id="supernaturalVideoPlayer" style="display: none;" controls></video>
+    <div id="radionicsMsg" class="info-box" style="display: none;">
+        <p>The Radionics Wish Machine has been activated. Your perception of reality is about to shift.</p>
+    </div>
+</body>
+</html>
