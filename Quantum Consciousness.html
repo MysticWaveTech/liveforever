@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Interactive System - id77</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+  
+body {
+    border: 10px solid #3b4c72; /* Slightly greyer dark blue border */
+    box-shadow: 0 0 20px #809bbf; /* Slightly greyer light blue glowing effect */
+}
+
+
+  
+  
+        .container {
+            margin: 0 auto;
+            width: 80%;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .info-box, .subsystem, .full-system, .interactive-content, .quantum-content, .abilities {
+            background-color: #444;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #ff5722;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #e64a19;
+        }
+        .hidden {
+            display: none;
+        }
+        .slider-container, .text-box-container, .radio-container, .image-upload-container, .media-container {
+            margin: 20px 0;
+        }
+        .image-preview {
+            max-width: 100%;
+            height: auto;
+            display: none;
+        }
+        .subsystem {
+            background-color: #555;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .full-system {
+            margin-top: 30px;
+            background-color: #666;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .quantum-content {
+            background-color: #777;
+        }
+        .quantum-model {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #888;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .radio-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .radio-container input[type="radio"] {
+            margin: 10px;
+        }
+        .abilities {
+            background-color: #999;
+        }
+        .css-sphere {
+            width: 100px;
+            height: 100px;
+            background-color: #555;
+            border-radius: 50%;
+            margin: 20px auto;
+            position: relative;
+        }
+        .css-sphere::before {
+            content: "Hidden";
+            color: #fff;
+            font-size: 14px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .css-sphere.active::before {
+            opacity: 1;
+        }
+  
+  
+.topvideo {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+  /* Add this to your existing <style> section */
+.btn {
+    margin: 20px;
+    padding: 15px 30px;
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: #e600e6;
+}
+
+  /* Add this to your existing <style> section */
+.wish-machine {
+    background-color: #111;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    margin: 20px auto;
+    width: 80%;
+    text-align: left;
+}
+.wish-machine h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.wish-machine label {
+    display: block;
+    margin-bottom: 5px;
+}
+.wish-machine input[type="text"],
+.wish-machine input[type="file"],
+.wish-machine input[type="range"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #00ff00;
+    background-color: #222;
+    color: #fff;
+}
+.wish-machine input[type="radio"] {
+    margin: 10px 5px 10px 0;
+}
+.wish-machine .btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #ff00ff;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.wish-machine .btn:hover {
+    background-color: #e600e6;
+}
+
+  
+/* Add this to your existing <style> section */
+.system-section {
+    background-color: #222;
+    border: 2px solid #ff00ff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+}
+
+.system-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.subsystem {
+    background-color: #333;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.subsystem h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.subsystem p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.info-section {
+    background-color: #111;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: left;
+}
+
+  /*wish buttons*/
+    .btn {
+        display: inline-block;
+        margin: 5px;
+        padding: 10px 20px;
+        background-color: #ff5722;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #e600e6;
+    }
+
+    audio, video {
+        margin-top: 20px;
+        width: 100%;
+    }
+  
+  /* Radionics Machine Button */
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 24px;
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Radionics Machine Section */
+.radionics-section {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-image: url('https://github.com/mysticwavetech/liveforever/raw/main/controls.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+  font-weight: bold;
+  color: red;
+}
+
+.radionics-section h2 {
+    margin-top: 0;
+}
+
+.radionics-section input[type="checkbox"],
+.radionics-section input[type="text"],
+.radionics-section input[type="file"],
+.radionics-section button {
+    display: block;
+    margin: 10px 0;
+}
+
+  /* Text box styling */
+  .radionics-section
+input[type="text"], textarea {
+    background-color: white;
+    color: red;
+    border: 2px solid red;
+    padding: 5px;
+    margin: 10px 0;
+    display: inline-block;
+    width: 300px; /* Adjust width as needed */
+}
+
+/* Checkbox styling */
+  .radionics-section
+input[type="checkbox"] {
+    border: 2px solid red;
+    margin-right: 5px; /* Add space between checkbox and label */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Prevent checkbox label from pushing onto the next line */
+.checkbox-label {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+  
+  
+  
+  .btn {
+            margin: 20px;
+            padding: 15px 30px;
+            background-color: #ff5722;
+            color: #fff;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e600e6;
+        }
+
+        .photo-preview {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            display: none; /* Initially hide the image preview */
+        }
+
+        .photo-preview-container {
+            margin-top: 20px;
+        }
+  
+</style>
+
+
+  
+ 
+</head>
+<body>
+  
+  <script>
+function showWishMachine() {
+    document.getElementById('wishMachine').style.display = 'block';
+}
+</script>
+
+<script>
+function submitWish() {
+    // Code to handle the wish submission
+    const integrationLevel = document.getElementById('integrationSlider').value;
+    const targetName = document.getElementById('targetName').value;
+    const entanglementStatus = document.querySelector('input[name="entanglementStatus"]:checked').value;
+    const targetPhoto = document.getElementById('targetPhoto').files[0];
+    const wishText = document.getElementById('wishText').value;
+
+    console.log('Integration Level:', integrationLevel);
+    console.log('Target Name:', targetName);
+    console.log('Entanglement Status:', entanglementStatus);
+    console.log('Target Photo:', targetPhoto);
+    console.log('Wish Text:', wishText);
+
+    // Further processing can be done here, like sending data to the server
+    alert('Wish submitted successfully!');
+}
+
+
+
+</script>
+
+<script>
+function activate5DReality() {
+    document.getElementById('info5DReality').style.display = 'block';
+    document.getElementById('infoLightBody').style.display = 'none';
+    document.getElementById('info4thDensity').style.display = 'none';
+}
+
+function activateLightBody() {
+    document.getElementById('info5DReality').style.display = 'none';
+    document.getElementById('infoLightBody').style.display = 'block';
+    document.getElementById('info4thDensity').style.display = 'none';
+}
+
+function activate4thDensity() {
+    document.getElementById('info5DReality').style.display = 'none';
+    document.getElementById('infoLightBody').style.display = 'none';
+    document.getElementById('info4thDensity').style.display = 'block';
+}
+</script>
+<script>
+    function playAudio(audioId) {
+        var audio = document.getElementById(audioId);
+        audio.play();
+    }
+
+    function playVideo(videoId) {
+        var video = document.getElementById(videoId);
+        video.style.display = 'block';
+        video.play();
+    }
+</script>
+
+
+
+
+  <video class="topvideo" src="https://raw.githubusercontent.com/mysticwavetech/liveforever/main/lowpolylandscape.mp4" controls></video>
+
+  
+    <div class="container">
+        <div class="info-box">
+            <h1>Welcome to the Integrated System - Quantum Conciousness</h1>
+            <p>Explore the intricate integration of supernatural systems, nature as a subsystem, and quantum consciousness (phi).</p>
+            <button class="btn" onclick="toggleContent('subsystemContent')">Explore Subsystem</button>
+        </div>
+
+        <div id="subsystemContent" class="hidden">
+            <div class="subsystem">
+                <h1>Subsystem - Nature</h1>
+                <p>Delve into the natural subsystems and their integration within the broader supernatural system. Explore the roles and interactions of natural elements.</p>
+                <button class="btn" onclick="showWishMachine()">Show Wish Machine</button>
+
+            </div>
+        </div>
+
+        <div id="wishMachine" style="display: none;">
+    <div class="wish-machine">
+        <h2>Wish Machine</h2>
+        <label for="integrationSlider">System Integration Level:</label>
+        <input type="range" id="integrationSlider" name="integrationSlider" min="0" max="100">
+        <br>
+        <label for="targetName">Target Name:</label>
+        <input type="text" id="targetName" name="targetName">
+        <br>
+        <label>Entanglement Status:</label>
+        <input type="radio" id="notEntangled" name="entanglementStatus" value="Not Entangled" checked>
+        <label for="notEntangled">Not Entangled</label>
+        <input type="radio" id="entangled" name="entanglementStatus" value="Entangled">
+        <label for="entangled">Entangled</label>
+        <br>
+        <label for="targetPhoto">Upload Target Persons Photograph:</label>
+  <input type="file" id="fileInput1" class="btn" accept="image/*">
+    <div class="photo-preview-container">
+        <img id="photoPreview1" class="photo-preview" src="" alt="Uploaded Photo 1">
+    </div>
+<script>
+        // Function to handle file input and preview for any given input and preview element
+        function handleFileUpload(inputId, previewId) {
+            document.getElementById(inputId).addEventListener('change', function(event) {
+                var file = event.target.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        var img = document.getElementById(previewId);
+                        img.src = e.target.result;
+                        img.style.display = 'block'; // Show the image when a file is selected
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Initialize file upload handling for both sections
+        handleFileUpload('fileInput1', 'photoPreview1');
+        handleFileUpload('fileInput2', 'photoPreview2');
+    </script>
+      
+      
+        <br>
+        <label for="wishText">Enter Wish:</label>
+        <input type="text" id="wishText" name="wishText">
+        <br>
+
+    <button class="btn" style="display: inline-block; margin: 10px; padding: 12px 24px; background-color: #4CAF50; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease;" onclick="playBroadcastVideo()">Broadcast</button>
+    <video id="video1" controls style="display: none; margin-top: 20px; width: 80%; max-width: 600px;">
+        <source src="https://raw.githubusercontent.com/mysticwavetech/liveforever/main/broadcast.mp4" type="video/mp4">
+    </video>
+
+    <button class="btn" style="display: inline-block; margin: 10px; padding: 12px 24px; background-color: #4CAF50; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease;" onclick="playSupernaturalVideo()">Broadcast Supernatural</button>
+    <video id="video2" controls style="display: none; margin-top: 20px; width: 80%; max-width: 600px;">
+        <source src="https://raw.githubusercontent.com/mysticwavetech/liveforever/main/broadcastsupernatural.mp4" type="video/mp4">
+    </video>
+
+      <button class="btn" onclick="playWishAudio()">Wish</button>
+<audio id="wishAudio" src="https://github.com/mysticwavetech/liveforever/raw/main/New%20Composition%207.mp3"></audio>
+
+      <script>
+    function playWishAudio() {
+        var audio = document.getElementById('wishAudio');
+        audio.play();
+    }
+</script>
+
+      
+    <script>
+        function playBroadcastSoundwave() {
+            var audio = document.getElementById('audio1');
+            if (audio) {
+                audio.play().catch(error => {
+                    console.error("Error playing Broadcast Soundwave audio:", error);
+                });
+            } else {
+                console.error("Broadcast Soundwave audio element not found.");
+            }
+        }
+
+        function playBroadcastVideo() {
+            var video = document.getElementById('video1');
+            if (video) {
+                video.style.display = 'block';
+                video.play().catch(error => {
+                    console.error("Error playing Broadcast video:", error);
+                });
+            } else {
+                console.error("Broadcast video element not found.");
+            }
+        }
+
+        function playSupernaturalSoundwave() {
+            var audio = document.getElementById('audio2');
+            if (audio) {
+                audio.play().catch(error => {
+                    console.error("Error playing Supernatural Soundwave audio:", error);
+                });
+            } else {
+                console.error("Supernatural Soundwave audio element not found.");
+            }
+        }
+
+        function playSupernaturalVideo() {
+            var video = document.getElementById('video2');
+            if (video) {
+                video.style.display = 'block';
+                video.play().catch(error => {
+                    console.error("Error playing Supernatural video:", error);
+                });
+            } else {
+                console.error("Supernatural video element not found.");
+            }
+        }
+    </script>
+
+      
+      
+    </div>
+</div>
+
+
+        <div class="full-system">
+            <p><strong>System Overview:</strong></p>
+            <p>The system integrates neurons (as a subsystem) within the brains reality framework, guided by consciousness (Φ). It encompasses nature and the supernatural system, showing how each component influences the whole.</p>
+            <button class="btn" onclick="toggleContent('hiddenPart')">Explore Behavioral Subsystems</button>
+        </div>
+
+        <div id="hiddenPart" class="hidden">
+            <div class="subsystem">
+                <h1>Behavioral Subsystems</h1>
+                <p>Behavioral subsystems show how individual actions and thoughts contribute to the broader system, highlighting the undeterminable aspect of consciousness debated in IIT.</p>
+           <button class="btn" onclick="toggleRadionicsSection()">Quantum Control Center</button>
+
+            </div>
+        </div>
+          <script>
+          
+          function toggleRadionicsSection() {
+    const section = document.getElementById('radionicsSection');
+    if (section.style.display === 'none' || section.style.display === '') {
+        section.style.display = 'block';
+    } else {
+        section.style.display = 'none';
+    }
+}
+
+function playRadionicsVideo(videoId) {
+    const video = document.getElementById(videoId);
+    if (video) {
+        video.style.display = 'block';
+        video.play().catch(error => {
+            console.error(`Error playing video ${videoId}:`, error);
+        });
+    } else {
+        console.error(`Video element ${videoId} not found.`);
+    }
+}
+
+          </script>
+          <div id="radionicsSection" class="radionics-section">
+    <h2>Controls</h2>
+            
+            
+            
+    <label for="psychicTuners">Psychic Tuners:</label>
+    <input type="range" id="psychicTuners1" min="0" max="100" step="1" value="50">
+    <input type="range" id="psychicTuners2" min="0" max="100" step="1" value="50">
+            <br><br>
+    <label>Information:<input type="checkbox" id="infoCheckbox"></label><br>
+    <label>Charge:<input type="checkbox" id="chargeCheckbox"> </label><br><br>
+    <label for="subtleWorlds">Reach Through Subtle Worlds:</label><br>
+    <input type="text" id="subtleWorlds" placeholder="Enter text"><br><br>
+    <label>Alchemy:<input type="checkbox" id="alchemyCheckbox"></label>
+    <label>Geometry:<input type="checkbox" id="geometryCheckbox"></label><br><br>
+    
+    <label for="intent">Intent:</label><br>
+    <input type="text" id="intent" placeholder="Enter intent"><br><br>
+    
+    <label for="imprintWater">Imprint Water:</label><br>
+    <input type="text" id="imprintWater" placeholder="Enter imprint"><br><br>
+    
+   
+    
+    <button class="btn" onclick="playRadionicsVideo('geometricBroadcast')">Geometric Broadcast</button>
+    <video id="geometricBroadcast" controls style="display: none;">
+        <source src="https://raw.githubusercontent.com/mysticwavetech/liveforever/main/geometricbroadcast2.mp4" type="video/mp4">
+    </video>
+            
+            
+             
+      <script>
+    function playWishAudio() {
+        var audio = document.getElementById('wishAudio');
+        audio.play();
+    }
+</script>
+
+            
+</div>
+<br>
+
+        <div class="quantum-content">
+            <h1>Quantum Consciousness (Φ)</h1>
+            <p>Quantum consciousness (Φ) represents the integration of subsystems within the supernatural system. This section explores how phi interacts with both natural and supernatural elements to form a cohesive whole.</p>
+            <div class="quantum-model">
+                <h2>Quantum Interaction Model</h2>
+                <p>This model demonstrates the interaction between phi and various subsystems. It represents how consciousness influences and integrates the components of the supernatural system.</p>
+                <!-- Placeholder for quantum model visualization -->
+                <div id="quantumModel" class="hidden">
+                    <p>Quantum Model Visualization</p>
+                 <img src="https://raw.githubusercontent.com/mysticwavetech/liveforever/main/DALL·E 2024-07-24 01.56.54.png" width="100%" alt="Phi (rectangle) above integrated subsystem (dotted lines)">
+
+                </div>
+                <button class="btn" onclick="toggleContent('quantumModel')">Show/hide</button>
+            </div>
+        </div>
+
+        <div class="abilities">
+            <h1>Activate Abilities</h1>
+          <div>
+    <button class="btn" onclick="activateAbility('teleportation')">Activate Teleportation</button>
+    <div id="teleportation-text" class="hidden">Ability Manifesting</div>
+
+    <button class="btn" onclick="activateAbility('telekinesis')">Activate Telekinesis</button>
+    <div id="telekinesis-text" class="hidden">Ability Manifesting</div>
+
+    <button class="btn" onclick="activateAbility('materialisation')">Activate Materialisation</button>
+    <div id="materialisation-text" class="hidden">Ability Manifesting</div>
+
+    <button class="btn" onclick="activateAbility('shapeshifting')">Activate Shapeshifting</button>
+    <div id="shapeshifting-text" class="hidden">Ability Manifesting</div>
+
+    <button class="btn" onclick="activateAbility('invincibility')">Activate Invincibility</button>
+    <div id="invincibility-text" class="hidden">Ability Manifesting</div>
+</div>
+
+          <script>
+          function activateAbility(ability) {
+    // Hide all text divs first
+    const texts = document.querySelectorAll('.hidden');
+    texts.forEach(text => text.classList.add('hidden'));
+
+    // Show the text corresponding to the clicked button
+    const textToShow = document.getElementById(ability + '-text');
+    if (textToShow) {
+        textToShow.classList.remove('hidden');
+    }
+}
+
+          </script>
+        </div>
+
+              
+  <div class="system-section">
+    <h2>7D Reality System</h2>
+              <p>The 7D Reality System represents the highest vibrational state of existence within our current understanding. It transcends physical limitations and operates on principles of pure consciousness and interconnectedness. In this realm, the concept of linear time dissolves, allowing for a fluid experience of past.</p>
+
+    <div class="subsystem">
+        <h3>3D Reality Subsystem</h3>
+        <p>Our current physical reality, where matter and energy interact in familiar ways.</p>
+      
+      
+        <button class="btn" onclick="activate4thDensity()">Activate 4th Density</button>
+        <button class="btn" onclick="activate5DReality()">Activate 5D Reality</button>
+        <button class="btn" onclick="activateLightBody()">Activate Light Body</button>
+    </div>
+</div>
+
+<!-- Hidden Information Sections -->
+<div id="info5DReality" class="info-section" style="display: none;">
+    <h3>5D Reality Activated!</h3>
+    <p>The 5D Reality is a higher vibrational frequency realm where consciousness expands beyond physical limitations. Its characterized by unity, unconditional love, and an expanded sense of time and space.</p>
+</div>
+
+<div id="infoLightBody" class="info-section" style="display: none;">
+    <h3>Light Body Activated!</h3>
+    <p>Activating the Light Body involves elevating ones energy to a higher frequency, often associated with spiritual awakening and ascension. It allows for increased spiritual abilities and a deeper connection to higher dimensions.</p>
+</div>
+
+<div id="info4thDensity" class="info-section" style="display: none;">
+    <h3>4th Density Activated!</h3>
+    <p>The 4th Density is a transitional stage between physical and non-physical realities. It emphasizes emotional understanding, compassion, and the development of a more collective consciousness.</p>
+</div>
+
+
+    <script>
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+            } else {
+                content.classList.add('hidden');
+            }
+        }
+
+        function uploadImage(event) {
+            const imagePreview = document.getElementById('imagePreview');
+            const targetImagePreview = document.getElementById('targetImagePreview');
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                if (event.target.id === 'imageUpload') {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                } else if (event.target.id === 'targetPhoto') {
+                    targetImagePreview.src = e.target.result;
+                    targetImagePreview.style.display = 'block';
+                }
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        function playAudio(id) {
+            const audio = document.getElementById(id);
+            if (audio) audio.play();
+        }
+
+        function playVideo(id) {
+            const video = document.getElementById(id);
+            if (video) video.play();
+        }
+
+        function activateRadionics() {
+            const targetName = document.getElementById('targetName').value;
+            const wish = document.getElementById('wish').value;
+            alert(`Activating radionics with target: ${targetName} and wish: ${wish}`);
+            toggleContent('radionicsContainer');
+        }
+
+        
+    </script>
+</div>
+<div style="max-width: 100%;">
+    <video controls style="width: 100%;">
+        <source src="https://raw.githubusercontent.com/mysticwavetech/liveforever/main/172156-846731269_small.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+
+
+</body>
+</html>
